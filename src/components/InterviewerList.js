@@ -3,15 +3,13 @@ import InterviewerListItem from "components/InterviewerListItem";
 import "components/InterviewerList.scss";
 
 export default function InterviewerList(props) {
-  const [interviewer, setInterviewer] = useState(props.value);
-
-  const interviewers = props.interviewers.map(person => (
+  const interviewers = props.interviewers.map(interviewer => (
     <InterviewerListItem
-      key={person.id}
-      name={person.name}
-      avatar={person.avatar}
-      selected={person.id === interviewer}
-      setInterviewer={() => setInterviewer(person.id)}
+      key={interviewer.id}
+      name={interviewer.name}
+      avatar={interviewer.avatar}
+      selected={interviewer.id === props.value}
+      setInterviewer={() => props.onChange(interviewer.id)}
     />
   ));
   return <ul className="interviewers__list">{interviewers}</ul>;
