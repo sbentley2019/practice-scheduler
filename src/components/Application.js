@@ -64,9 +64,14 @@ export default function Application(props) {
   const [days, setDays] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8001/api/days").then(res => {
-      setDays(res.data);
-    });
+    axios
+      .get("/api/days")
+      .then(res => {
+        setDays(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }, []);
 
   return (
