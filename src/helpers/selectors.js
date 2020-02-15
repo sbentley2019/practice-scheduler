@@ -1,8 +1,8 @@
-export function getAppointmentsForDay(state, day) {
-  const appoint = state.days.find(days => days.name === day);
-  if (!appoint) return [];
-  const result = appoint.appointments.map(index => {
-    return state.appointments[index];
+export function getXForDay(state, day, x) {
+  const dayObj = state.days.find(days => days.name === day);
+  if (!dayObj) return [];
+  const result = dayObj[x].map(index => {
+    return state[x][index];
   });
   return result;
 }
