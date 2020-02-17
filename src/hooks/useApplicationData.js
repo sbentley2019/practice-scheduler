@@ -75,6 +75,11 @@ export default function useApplicationData() {
       .catch(err => {
         console.log(err);
       });
+
+    const ws = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL);
+    ws.addEventListener("open", () => {
+      ws.send("ping");
+    });
   }, []);
 
   const setDay = day => dispatch({ type: SET_DAY, day });
